@@ -1,0 +1,12 @@
+{
+  "name": "pro-market",
+  "private": true,
+  "devDependencies": {
+    "@vercel/node": "^5.3.8",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "dev:miniapp": "cd miniapp && npm run dev",
+    "build": "cd miniapp && npm install && npm run build"
+  }
+}
