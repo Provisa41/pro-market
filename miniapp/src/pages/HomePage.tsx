@@ -13,7 +13,7 @@ const actions = [
     to: "/ad",
     icon: "📢",
     title: "Выложить рекламу",
-    desc: "Объявление как в Яндекс.Директ — заголовок, CTA, ключи",
+    desc: "Заголовок, текст, CTA и ключевые фразы для высокого CTR",
     color: "card-action--orange",
   },
   {
@@ -69,7 +69,7 @@ export default function HomePage() {
         <h3 className="panel__title panel__title--sm">Как это работает</h3>
         <ol className="steps">
           <li>
-            <span>1</span> Заполните пост или рекламу — подсказки как в Директе
+            <span>1</span> Заполните пост или рекламу — подсказки по конверсии
           </li>
           <li>
             <span>2</span> Проверьте индекс CTR перед публикацией

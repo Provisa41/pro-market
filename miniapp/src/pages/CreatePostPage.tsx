@@ -52,7 +52,7 @@ export default function CreatePostPage() {
       <section className="form-panel">
         <FormField
           label="Заголовок поста"
-          hint="Цепляющая фраза с выгодой (как заголовок в Директе)"
+          hint="Цепляющая фраза с выгодой для ленты"
           value={draft.title}
           onChange={patch("title")}
           maxLength={70}

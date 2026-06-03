@@ -37,7 +37,7 @@ export default function PublishAdPage() {
       <section className="page-head">
         <h2 className="page-head__title">Выложить рекламу</h2>
         <p className="page-head__sub">
-          Структура как в Яндекс.Директ — заголовок, текст, CTA, ключи, бюджет
+          Заголовок, текст, CTA, ключи и бюджет — всё для высокого CTR
         </p>
       </section>
 
@@ -51,11 +51,11 @@ export default function PublishAdPage() {
       />
 
       <section className="form-panel">
-        <div className="direct-tip">
+        <div className="format-tip">
           <span>💡</span>
           <p>
-            <strong>Яндекс.Директ:</strong> заголовок до 56 символов, текст до 81 —
-            так выше CTR в мобильной выдаче. Мы применяем те же лимиты.
+            <strong>Рекомендация:</strong> заголовок до 56 символов, текст до 81 —
+            так выше CTR в мобильной ленте.
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export default function PublishAdPage() {
         />
         <FormField
           label="Отображаемая ссылка"
-          hint="Как в сниппете Директа — домен без https"
+          hint="Домен без https — как в карточке объявления"
           value={draft.displayUrl}
           onChange={patch("displayUrl")}
           placeholder="shop.example.ru"
@@ -103,7 +103,7 @@ export default function PublishAdPage() {
 
         <FormField
           label="Ключевые фразы"
-          hint="Через запятую — как подбор ключей в Директе"
+          hint="Через запятую — 5–10 релевантных фраз"
           value={draft.keywords}
           onChange={patch("keywords")}
           placeholder="купить онлайн, доставка еда, скидка"

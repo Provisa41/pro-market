@@ -6,7 +6,7 @@ export type ConversionInsight = {
   tips: string[];
 };
 
-/** Оценка креатива по практикам Яндекс.Директ / performance-маркетинга */
+/** Оценка креатива по практикам performance-маркетинга */
 export function scoreAd(draft: AdDraft): ConversionInsight {
   let score = 40;
   const tips: string[] = [];
@@ -33,7 +33,7 @@ export function scoreAd(draft: AdDraft): ConversionInsight {
   else tips.push("Выберите чёткий призыв к действию (CTA).");
 
   if (draft.keywords.split(",").filter(Boolean).length >= 3) score += 8;
-  else tips.push("Добавьте 5–10 ключевых фраз через запятую — как в Директе.");
+  else tips.push("Добавьте 5–10 ключевых фраз через запятую для точного таргета.");
 
   if (draft.platforms.length >= 2) score += 7;
   else tips.push("Запустите минимум в Telegram + ещё одну соцсеть для охвата.");
