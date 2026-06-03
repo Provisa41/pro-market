@@ -1,29 +1,86 @@
 import { Link } from "react-router-dom";
 import WebApp from "@twa-dev/sdk";
 
+const actions = [
+  {
+    to: "/post",
+    icon: "✏️",
+    title: "Добавить пост",
+    desc: "Текст, ссылка и хештеги для Telegram и соцсетей",
+    color: "card-action--violet",
+  },
+  {
+    to: "/ad",
+    icon: "📢",
+    title: "Выложить рекламу",
+    desc: "Объявление как в Яндекс.Директ — заголовок, CTA, ключи",
+    color: "card-action--orange",
+  },
+  {
+    to: "/promote",
+    icon: "🚀",
+    title: "Продвижение поста",
+    desc: "Таргет в Telegram, VK, Instagram и др.",
+    color: "card-action--cyan",
+  },
+];
+
 export default function HomePage() {
   const user = WebApp.initDataUnsafe.user;
 
   return (
     <>
-      <section className="card">
-        <h2 style={{ marginTop: 0 }}>Welcome{user ? `, ${user.first_name}` : ""}</h2>
-        <p className="hint">
-          Launch a personalized demo campaign in under 30 seconds, then track
-          basic engagement metrics.
+      <section className="panel panel--highlight">
+        <h2 className="panel__title">
+          {user ? `Привет, ${user.first_name}!` : "Добро пожаловать"}
+        </h2>
+        <p className="panel__text">
+          Создайте креатив, мы разместим в Telegram и соцсетях с фокусом на
+          клики и конверсию — по лучшим практикам performance-рекламы.
         </p>
-        <Link to="/demo" className="btn" style={{ textAlign: "center", marginTop: 12 }}>
-          Start demo campaign
-        </Link>
+        <div className="stats-row">
+          <div className="stat-pill">
+            <span className="stat-pill__val">+34%</span>
+            <span className="stat-pill__lbl">ср. CTR</span>
+          </div>
+          <div className="stat-pill">
+            <span className="stat-pill__val">Telegram</span>
+            <span className="stat-pill__lbl">+ 4 сети</span>
+          </div>
+          <div className="stat-pill">
+            <span className="stat-pill__val">AI</span>
+            <span className="stat-pill__lbl">подсказки</span>
+          </div>
+        </div>
       </section>
 
-      <section className="card">
-        <h3 style={{ marginTop: 0 }}>What you get in V1</h3>
-        <ul className="hint" style={{ paddingLeft: 18 }}>
-          <li>Interactive ad preview (mock personalization)</li>
-          <li>Engagement rate over 50% in demo scenarios</li>
-          <li>7-day basic analytics snapshot</li>
-        </ul>
+      <p className="section-label">Быстрые действия</p>
+      <div className="action-grid">
+        {actions.map((a) => (
+          <Link key={a.to} to={a.to} className={`card-action ${a.color}`}>
+            <span className="card-action__icon">{a.icon}</span>
+            <strong>{a.title}</strong>
+            <span className="card-action__desc">{a.desc}</span>
+          </Link>
+        ))}
+      </div>
+
+      <section className="panel">
+        <h3 className="panel__title panel__title--sm">Как это работает</h3>
+        <ol className="steps">
+          <li>
+            <span>1</span> Заполните пост или рекламу — подсказки как в Директе
+          </li>
+          <li>
+            <span>2</span> Проверьте индекс CTR перед публикацией
+          </li>
+          <li>
+            <span>3</span> Pro Market размещает в выбранных каналах и сетях
+          </li>
+        </ol>
+        <Link to="/analytics" className="btn btn--ghost">
+          Смотреть статистику →
+        </Link>
       </section>
     </>
   );

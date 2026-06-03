@@ -1,19 +1,20 @@
 import { useEffect } from "react";
-import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import WebApp from "@twa-dev/sdk";
-import DemoPage from "./pages/DemoPage";
-import AnalyticsPage from "./pages/AnalyticsPage";
+import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
-
-function navClass({ isActive }: { isActive: boolean }) {
-  return isActive ? "active" : "";
-}
+import CreatePostPage from "./pages/CreatePostPage";
+import PublishAdPage from "./pages/PublishAdPage";
+import PromotePostPage from "./pages/PromotePostPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
 
 function routeFromStartParam(): string | null {
   const param = WebApp.initDataUnsafe.start_param;
   if (!param) return null;
-  if (param === "demo" || param.startsWith("demo")) return "/demo";
+  if (param === "demo" || param.startsWith("demo")) return "/ad";
   if (param === "analytics" || param.startsWith("analytics")) return "/analytics";
+  if (param === "post" || param.startsWith("post")) return "/post";
+  if (param === "promote" || param.startsWith("promote")) return "/promote";
   return null;
 }
 
@@ -26,31 +27,14 @@ export default function App() {
   }, [navigate]);
 
   return (
-    <div className="app">
-      <header className="card">
-        <h1 style={{ margin: "0 0 4px", fontSize: "1.25rem" }}>Pro Market</h1>
-        <p className="hint" style={{ margin: 0 }}>
-          AI-driven interactive ad campaigns
-        </p>
-      </header>
-
-      <nav className="nav">
-        <NavLink to="/" end className={navClass}>
-          Home
-        </NavLink>
-        <NavLink to="/demo" className={navClass}>
-          Demo
-        </NavLink>
-        <NavLink to="/analytics" className={navClass}>
-          Analytics
-        </NavLink>
-      </nav>
-
-      <Routes>
+    <Routes>
+      <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/demo" element={<DemoPage />} />
+        <Route path="/post" element={<CreatePostPage />} />
+        <Route path="/ad" element={<PublishAdPage />} />
+        <Route path="/promote" element={<PromotePostPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
-      </Routes>
-    </div>
+      </Route>
+    </Routes>
   );
 }
