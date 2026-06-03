@@ -6,11 +6,16 @@ from aiogram.types import (
 )
 
 
+# Меняйте при обновлении Mini App — сбрасывает кэш Telegram
+WEBAPP_CACHE_VERSION = "2"
+
+
 def webapp_url(base: str, start_param: str | None = None) -> str:
     url = base.rstrip("/")
+    sep = "&" if "?" in url else "?"
+    url = f"{url}{sep}v={WEBAPP_CACHE_VERSION}"
     if start_param:
-        sep = "&" if "?" in url else "?"
-        return f"{url}{sep}tgWebAppStartParam={start_param}"
+        url = f"{url}&tgWebAppStartParam={start_param}"
     return url
 
 
