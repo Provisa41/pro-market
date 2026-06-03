@@ -2,10 +2,11 @@ import { NavLink } from "react-router-dom";
 
 const items = [
   { to: "/", label: "Главная", icon: "🏠", end: true },
+  { to: "/campaigns", label: "Кампании", icon: "📋" },
   { to: "/post", label: "Пост", icon: "✏️" },
   { to: "/ad", label: "Реклама", icon: "📢" },
-  { to: "/promote", label: "Продвижение", icon: "🚀" },
-  { to: "/analytics", label: "Статистика", icon: "📊" },
+  { to: "/promote", label: "Промо", icon: "🚀" },
+  { to: "/analytics", label: "Стат.", icon: "📊" },
 ];
 
 export default function BottomNav() {

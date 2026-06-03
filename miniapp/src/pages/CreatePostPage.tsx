@@ -3,6 +3,7 @@ import WebApp from "@twa-dev/sdk";
 import FormField from "../components/FormField";
 import ConversionScore from "../components/ConversionScore";
 import AdPreview from "../components/AdPreview";
+import { savePostCampaign } from "../lib/campaignsStorage";
 import { scorePost } from "../lib/conversion";
 import type { PostDraft } from "../types/campaign";
 
@@ -24,9 +25,14 @@ export default function CreatePostPage() {
 
   const publish = () => {
     WebApp.HapticFeedback?.impactOccurred("medium");
+    savePostCampaign(
+      draft.title,
+      draft.body.slice(0, 120) || "Пост для Telegram и соцсетей",
+      insight.score
+    );
     setPublished(true);
     WebApp.showAlert(
-      "Пост принят! Pro Market подготовит публикацию в Telegram и выбранных соцсетях."
+      "Пост принят! Смотрите в разделе «Мои кампании». Pro Market подготовит публикацию."
     );
   };
 

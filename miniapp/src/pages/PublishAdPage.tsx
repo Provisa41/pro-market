@@ -4,6 +4,7 @@ import FormField from "../components/FormField";
 import PlatformPicker from "../components/PlatformPicker";
 import ConversionScore from "../components/ConversionScore";
 import AdPreview from "../components/AdPreview";
+import { saveAdCampaign } from "../lib/campaignsStorage";
 import { scoreAd } from "../lib/conversion";
 import { CTA_OPTIONS, type AdDraft } from "../types/campaign";
 
@@ -27,8 +28,15 @@ export default function PublishAdPage() {
 
   const publish = () => {
     WebApp.HapticFeedback?.notificationOccurred("success");
+    saveAdCampaign(
+      draft.headline,
+      draft.description.slice(0, 120) || draft.headline,
+      insight.score,
+      draft.platforms,
+      draft.budget
+    );
     WebApp.showAlert(
-      `Реклама отправлена!\nПлатформы: ${draft.platforms.join(", ")}\nБюджет: ${draft.budget} ₽/день\nPro Market запускает кампанию с оптимизацией CTR.`
+      `Реклама отправлена!\nПлатформы: ${draft.platforms.join(", ")}\nБюджет: ${draft.budget} ₽/день\nСмотрите в «Мои кампании».`
     );
   };
 

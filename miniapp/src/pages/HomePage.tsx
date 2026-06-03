@@ -52,6 +52,9 @@ export default function HomePage() {
             <span className="stat-pill__lbl">подсказки</span>
           </div>
         </div>
+        <Link to="/campaigns" className="btn btn--campaigns">
+          📋 Мои кампании
+        </Link>
       </section>
 
       <p className="section-label">Быстрые действия</p>

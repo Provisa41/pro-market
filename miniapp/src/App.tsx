@@ -7,6 +7,7 @@ import CreatePostPage from "./pages/CreatePostPage";
 import PublishAdPage from "./pages/PublishAdPage";
 import PromotePostPage from "./pages/PromotePostPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import MyCampaignsPage from "./pages/MyCampaignsPage";
 
 function routeFromStartParam(): string | null {
   const param = WebApp.initDataUnsafe.start_param;
@@ -15,6 +16,7 @@ function routeFromStartParam(): string | null {
   if (param === "analytics" || param.startsWith("analytics")) return "/analytics";
   if (param === "post" || param.startsWith("post")) return "/post";
   if (param === "promote" || param.startsWith("promote")) return "/promote";
+  if (param === "campaigns" || param.startsWith("campaigns")) return "/campaigns";
   return null;
 }
 
@@ -30,6 +32,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/campaigns" element={<MyCampaignsPage />} />
         <Route path="/post" element={<CreatePostPage />} />
         <Route path="/ad" element={<PublishAdPage />} />
         <Route path="/promote" element={<PromotePostPage />} />

@@ -4,6 +4,7 @@ import FormField from "../components/FormField";
 import PlatformPicker from "../components/PlatformPicker";
 import ConversionScore from "../components/ConversionScore";
 import AdPreview from "../components/AdPreview";
+import { savePromoteCampaign } from "../lib/campaignsStorage";
 import { scorePromote } from "../lib/conversion";
 import { OBJECTIVES, type PromoteDraft } from "../types/campaign";
 
@@ -28,8 +29,15 @@ export default function PromotePostPage() {
   const publish = () => {
     WebApp.HapticFeedback?.notificationOccurred("success");
     const obj = OBJECTIVES.find((o) => o.id === draft.objective)?.label;
+    savePromoteCampaign(
+      draft.title,
+      `${obj ?? "Продвижение"} · ${draft.body.slice(0, 80)}`,
+      insight.score,
+      draft.platforms,
+      draft.dailyBudget
+    );
     WebApp.showAlert(
-      `Продвижение запущено!\nЦель: ${obj}\nСети: ${draft.platforms.join(", ")}\nБюджет: ${draft.dailyBudget} ₽/день`
+      `Продвижение запущено!\nЦель: ${obj}\nСети: ${draft.platforms.join(", ")}\nСмотрите в «Мои кампании».`
     );
   };
 

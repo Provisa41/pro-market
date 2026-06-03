@@ -45,6 +45,37 @@ export const OBJECTIVES = [
   { id: "awareness" as const, label: "Охват и узнаваемость", icon: "📣" },
 ];
 
+export type CampaignType = "post" | "ad" | "promote";
+
+export type CampaignStatus = "queued" | "active" | "completed";
+
+export type SavedCampaign = {
+  id: string;
+  type: CampaignType;
+  status: CampaignStatus;
+  title: string;
+  summary: string;
+  createdAt: number;
+  ctrScore: number;
+  platforms: string[];
+  budget?: string;
+};
+
+export const CAMPAIGN_TYPE_LABELS: Record<
+  CampaignType,
+  { label: string; icon: string }
+> = {
+  post: { label: "Пост", icon: "✏️" },
+  ad: { label: "Реклама", icon: "📢" },
+  promote: { label: "Продвижение", icon: "🚀" },
+};
+
+export const CAMPAIGN_STATUS_LABELS: Record<CampaignStatus, string> = {
+  queued: "В очереди",
+  active: "Активна",
+  completed: "Завершена",
+};
+
 export const PLATFORMS: { id: Platform; label: string; icon: string }[] = [
   { id: "telegram", label: "Telegram", icon: "✈️" },
   { id: "vk", label: "VK", icon: "🔵" },
